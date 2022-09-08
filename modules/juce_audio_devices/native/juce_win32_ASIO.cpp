@@ -440,9 +440,6 @@ public:
         err = asioObject->getChannels (&totalNumInputChans, &totalNumOutputChans);
         jassert (err == ASE_OK);
 
-        if (asioObject->future (kAsioCanReportOverload, nullptr) != ASE_OK)
-            xruns = -1;
-
         inBuffers.calloc (totalNumInputChans + 8);
         outBuffers.calloc (totalNumOutputChans + 8);
 
