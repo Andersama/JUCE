@@ -116,26 +116,8 @@
  #include "native/juce_win32_Midi.cpp"
 
  #if JUCE_ASIO
-  /* This is very frustrating - we only need to use a handful of definitions from
-     a couple of the header files in Steinberg's ASIO SDK, and it'd be easy to copy
-     about 30 lines of code into this cpp file to create a fully stand-alone ASIO
-     implementation...
-
-     ..unfortunately that would break Steinberg's license agreement for use of
-     their SDK, so I'm not allowed to do this.
-
-     This means that anyone who wants to use JUCE's ASIO abilities will have to:
-
-     1) Agree to Steinberg's licensing terms and download the ASIO SDK
-         (see http://www.steinberg.net/en/company/developers.html).
-
-     2) Enable this code with a global definition #define JUCE_ASIO 1.
-
-     3) Make sure that your header search path contains the iasiodrv.h file that
-        comes with the SDK. (Only about a handful of the SDK header files are actually
-        needed - so to simplify things, you could just copy these into your JUCE directory).
-  */
-  #include <iasiodrv.h>
+  // See juce repo for why this wrapper header exists
+  #include "openasio_sdk/asio-wrapper.hpp"
   #include "native/juce_win32_ASIO.cpp"
  #endif
 
